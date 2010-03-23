@@ -1,0 +1,16 @@
+**Makefile
+**Makefile.in
+aclocal.m4
+config.h
+config.h.in
+config.log
+config.status
+configure
+libtool
+ltmain.sh
+src/Makefile
+src/Makefile.in
+autom4te.cache
+**~
+libchardet.spec
+
