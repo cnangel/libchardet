@@ -13,4 +13,4 @@ src/Makefile.in
 autom4te.cache
 **~
 libchardet.spec
-
+**.bak
