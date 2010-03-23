@@ -1,0 +1,8 @@
+libchardet_la-LangBulgarianModel.lo: LangBulgarianModel.cpp \
+ nsSBCharSetProber.h nsCharSetProber.h nscore.h
+
+nsSBCharSetProber.h:
+
+nsCharSetProber.h:
+
+nscore.h:

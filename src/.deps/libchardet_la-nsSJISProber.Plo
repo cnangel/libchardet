@@ -1,0 +1,17 @@
+libchardet_la-nsSJISProber.lo: nsSJISProber.cpp nsSJISProber.h \
+ nsCharSetProber.h nscore.h nsCodingStateMachine.h nsPkgInt.h JpCntx.h \
+ CharDistribution.h
+
+nsSJISProber.h:
+
+nsCharSetProber.h:
+
+nscore.h:
+
+nsCodingStateMachine.h:
+
+nsPkgInt.h:
+
+JpCntx.h:
+
+CharDistribution.h:

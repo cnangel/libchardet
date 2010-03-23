@@ -1,0 +1,15 @@
+libchardet_la-nsEscCharsetProber.lo: nsEscCharsetProber.cpp \
+ nsEscCharsetProber.h nsCharSetProber.h nscore.h nsCodingStateMachine.h \
+ nsPkgInt.h nsUniversalDetector.h
+
+nsEscCharsetProber.h:
+
+nsCharSetProber.h:
+
+nscore.h:
+
+nsCodingStateMachine.h:
+
+nsPkgInt.h:
+
+nsUniversalDetector.h:

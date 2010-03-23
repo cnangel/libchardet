@@ -1,0 +1,66 @@
+%define _tmppath %{_topdir}/BUILDROOT
+
+Name: libchardet
+Version: 0.0.5
+Release: 1
+
+Summary: a library for charset detector
+License: GPLv3
+Group: Application/Systems
+Url: http://www.mozilla.org/projects/intl/chardet.html
+Source0: %{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id} -u -n)
+
+%define PACKAGE_HOME %{_datadir}/@PACKAGE@
+
+Packager: Cnangel <junliang.li@alibaba-inc.com>
+
+%description
+%{name}(Charset detector) in Mozilla is a XPCOM component which receive bytes as incoming data and base on the bytes of data "guess" what the charset of the data is and report it to the caller.
+
+%package devel
+Summary: Header files, libraries for %{name}.
+Group: %{group}
+Requires: %{name} = %{version}-%{release} 
+
+%description devel
+This package contains the header files and static libraries for %{name}.
+If you like to develop programs using %{name}, you will need to install %{name}-devel.
+
+%prep
+%setup -q
+
+%build
+%configure
+make %{?_smp_mflags}
+make check
+
+%install
+rm -rf $RPM_BUILD_ROOT
+%makeinstall
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post
+ldconfig
+
+%postun
+ldconfig
+
+%files
+%defattr(-,root,root,-)
+%{_libdir}/*.so*
+%{_bindir}
+
+%files devel
+%defattr(-,root,root,-)
+%{_includedir}
+%{_libdir}/*.a
+%{_libdir}/*.la
+
+%changelog
+* Tue Mar 23 2010 Cnangel <junliang.li@alibaba-inc.com> 1.0.0-1
+- create spec file 
+
+# -fin-

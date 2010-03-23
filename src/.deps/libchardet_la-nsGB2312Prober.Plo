@@ -1,0 +1,15 @@
+libchardet_la-nsGB2312Prober.lo: nsGB2312Prober.cpp nsGB2312Prober.h \
+ nsCharSetProber.h nscore.h nsCodingStateMachine.h nsPkgInt.h \
+ CharDistribution.h
+
+nsGB2312Prober.h:
+
+nsCharSetProber.h:
+
+nscore.h:
+
+nsCodingStateMachine.h:
+
+nsPkgInt.h:
+
+CharDistribution.h:

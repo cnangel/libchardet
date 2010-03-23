@@ -1,0 +1,5 @@
+libchardet_la-JpCntx.lo: JpCntx.cpp nscore.h JpCntx.h
+
+nscore.h:
+
+JpCntx.h:

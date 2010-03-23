@@ -1,0 +1,15 @@
+libchardet_la-nsEUCKRProber.lo: nsEUCKRProber.cpp nsEUCKRProber.h \
+ nsCharSetProber.h nscore.h nsCodingStateMachine.h nsPkgInt.h \
+ CharDistribution.h
+
+nsEUCKRProber.h:
+
+nsCharSetProber.h:
+
+nscore.h:
+
+nsCodingStateMachine.h:
+
+nsPkgInt.h:
+
+CharDistribution.h:

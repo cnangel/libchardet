@@ -1,0 +1,15 @@
+libchardet_la-nsEUCTWProber.lo: nsEUCTWProber.cpp nsEUCTWProber.h \
+ nsCharSetProber.h nscore.h nsCodingStateMachine.h nsPkgInt.h \
+ CharDistribution.h
+
+nsEUCTWProber.h:
+
+nsCharSetProber.h:
+
+nscore.h:
+
+nsCodingStateMachine.h:
+
+nsPkgInt.h:
+
+CharDistribution.h:

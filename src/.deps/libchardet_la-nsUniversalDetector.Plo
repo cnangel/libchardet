@@ -1,0 +1,42 @@
+libchardet_la-nsUniversalDetector.lo: nsUniversalDetector.cpp nscore.h \
+ nsUniversalDetector.h nsMBCSGroupProber.h nsSJISProber.h \
+ nsCharSetProber.h nsCodingStateMachine.h nsPkgInt.h JpCntx.h \
+ CharDistribution.h nsUTF8Prober.h nsEUCJPProber.h nsGB2312Prober.h \
+ nsEUCKRProber.h nsBig5Prober.h nsEUCTWProber.h nsSBCSGroupProber.h \
+ nsEscCharsetProber.h nsLatin1Prober.h
+
+nscore.h:
+
+nsUniversalDetector.h:
+
+nsMBCSGroupProber.h:
+
+nsSJISProber.h:
+
+nsCharSetProber.h:
+
+nsCodingStateMachine.h:
+
+nsPkgInt.h:
+
+JpCntx.h:
+
+CharDistribution.h:
+
+nsUTF8Prober.h:
+
+nsEUCJPProber.h:
+
+nsGB2312Prober.h:
+
+nsEUCKRProber.h:
+
+nsBig5Prober.h:
+
+nsEUCTWProber.h:
+
+nsSBCSGroupProber.h:
+
+nsEscCharsetProber.h:
+
+nsLatin1Prober.h:

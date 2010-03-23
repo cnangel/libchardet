@@ -1,0 +1,8 @@
+libchardet_la-LangGreekModel.lo: LangGreekModel.cpp nsSBCharSetProber.h \
+ nsCharSetProber.h nscore.h
+
+nsSBCharSetProber.h:
+
+nsCharSetProber.h:
+
+nscore.h:

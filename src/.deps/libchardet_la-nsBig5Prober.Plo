@@ -1,0 +1,15 @@
+libchardet_la-nsBig5Prober.lo: nsBig5Prober.cpp nsBig5Prober.h \
+ nsCharSetProber.h nscore.h nsCodingStateMachine.h nsPkgInt.h \
+ CharDistribution.h
+
+nsBig5Prober.h:
+
+nsCharSetProber.h:
+
+nscore.h:
+
+nsCodingStateMachine.h:
+
+nsPkgInt.h:
+
+CharDistribution.h:

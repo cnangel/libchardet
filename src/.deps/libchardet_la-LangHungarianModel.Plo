@@ -1,0 +1,8 @@
+libchardet_la-LangHungarianModel.lo: LangHungarianModel.cpp \
+ nsSBCharSetProber.h nsCharSetProber.h nscore.h
+
+nsSBCharSetProber.h:
+
+nsCharSetProber.h:
+
+nscore.h:

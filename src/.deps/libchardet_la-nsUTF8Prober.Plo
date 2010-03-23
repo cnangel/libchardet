@@ -1,0 +1,12 @@
+libchardet_la-nsUTF8Prober.lo: nsUTF8Prober.cpp nsUTF8Prober.h \
+ nsCharSetProber.h nscore.h nsCodingStateMachine.h nsPkgInt.h
+
+nsUTF8Prober.h:
+
+nsCharSetProber.h:
+
+nscore.h:
+
+nsCodingStateMachine.h:
+
+nsPkgInt.h:

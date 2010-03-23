@@ -1,0 +1,17 @@
+libchardet_la-CharDistribution.lo: CharDistribution.cpp \
+ CharDistribution.h nscore.h tables/JISFreq.tab tables/Big5Freq.tab \
+ tables/EUCKRFreq.tab tables/EUCTWFreq.tab tables/GB2312Freq.tab
+
+CharDistribution.h:
+
+nscore.h:
+
+tables/JISFreq.tab:
+
+tables/Big5Freq.tab:
+
+tables/EUCKRFreq.tab:
+
+tables/EUCTWFreq.tab:
+
+tables/GB2312Freq.tab:

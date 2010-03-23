@@ -1,0 +1,17 @@
+libchardet_la-nsEUCJPProber.lo: nsEUCJPProber.cpp nsEUCJPProber.h \
+ nsCharSetProber.h nscore.h nsCodingStateMachine.h nsPkgInt.h JpCntx.h \
+ CharDistribution.h
+
+nsEUCJPProber.h:
+
+nsCharSetProber.h:
+
+nscore.h:
+
+nsCodingStateMachine.h:
+
+nsPkgInt.h:
+
+JpCntx.h:
+
+CharDistribution.h:
