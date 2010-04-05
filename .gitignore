@@ -17,7 +17,9 @@ libchardet.spec
 *.o
 *.lo
 *.loT
-src/.libs
+.libs
 *.la
 *.swp
 src/chardetor
+*.deps
+*.log

@@ -1,4 +1,5 @@
 #Makefile.am
+AM_LDFLAGS = -fPIC
 lib_LTLIBRARIES = libchardet.la
 libchardet_la_SOURCES = CharDistribution.cpp \
 nsEUCJPProber.h \
@@ -55,7 +56,7 @@ nsUTF8Prober.cpp \
 nsSJISProber.cpp \
 LangCyrillicModel.cpp
 
-AM_CXXFLAGS = -Wall -Wno-non-virtual-dtor -nostdinc++ -fno-rtti -fno-exceptions
+AM_CXXFLAGS = -Wall -Wno-non-virtual-dtor -nostdinc++ -fno-rtti -fno-exceptions 
 include_HEADERS = chardet.h
 libchardet_la_CPPFLAGS = -nostdinc++ -fno-rtti -fno-exceptions -I tables
 
