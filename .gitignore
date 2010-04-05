@@ -12,7 +12,6 @@ src/Makefile
 src/Makefile.in
 autom4te.cache
 **~
-libchardet.spec
 **.bak
 *.o
 *.lo
@@ -23,3 +22,5 @@ libchardet.spec
 src/chardetor
 *.deps
 *.log
+*.tar.gz
+*.spec
