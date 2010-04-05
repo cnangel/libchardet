@@ -14,3 +14,10 @@ autom4te.cache
 **~
 libchardet.spec
 **.bak
+*.o
+*.lo
+*.loT
+src/.libs
+*.la
+*.swp
+src/chardetor
