@@ -1,8 +1,0 @@
-libchardet_la-nsEscSM.lo: nsEscSM.cpp nsCodingStateMachine.h nsPkgInt.h \
-  nscore.h
-
-nsCodingStateMachine.h:
-
-nsPkgInt.h:
-
-nscore.h:

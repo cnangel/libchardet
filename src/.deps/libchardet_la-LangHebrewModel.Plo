@@ -1,8 +1,0 @@
-libchardet_la-LangHebrewModel.lo: LangHebrewModel.cpp nsSBCharSetProber.h \
-  nsCharSetProber.h nscore.h
-
-nsSBCharSetProber.h:
-
-nsCharSetProber.h:
-
-nscore.h:
