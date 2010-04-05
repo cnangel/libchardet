@@ -1,5 +1,5 @@
 libchardet_la-LangCyrillicModel.lo: LangCyrillicModel.cpp \
- nsSBCharSetProber.h nsCharSetProber.h nscore.h
+  nsSBCharSetProber.h nsCharSetProber.h nscore.h
 
 nsSBCharSetProber.h:
 

@@ -1,5 +1,5 @@
 libchardet_la-LangThaiModel.lo: LangThaiModel.cpp nsSBCharSetProber.h \
- nsCharSetProber.h nscore.h
+  nsCharSetProber.h nscore.h
 
 nsSBCharSetProber.h:
 

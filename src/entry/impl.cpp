@@ -60,32 +60,31 @@ protected:
     char *charset_;
 
 public:
-    DllDetector()
-	: nsUniversalDetector(NS_FILTER_ALL)
+    DllDetector() : nsUniversalDetector(NS_FILTER_ALL), charset_(NULL)
     {
-	charset_ = NULL;
     }
 
     virtual ~DllDetector()
     {
-	if (charset_) delete charset_;
-    }
+		//if (charset_) delete charset_;
+		if (charset_) free(charset_);
+	}
 
     virtual void Report(const char* charset)
-    {
-	charset_ = strdup(charset);
-    }
+	{
+		charset_ = strdup(charset);
+	}
 
     virtual void Reset()
     {
-	nsUniversalDetector::Reset();
-	charset_ = strdup("");
-    }
+		nsUniversalDetector::Reset();
+		charset_ = strdup("");
+	}
 
     const char* GetCharset() const
-    {
-	return charset_;
-    }
+	{
+		return charset_;
+	}
 };
 
 
