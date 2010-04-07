@@ -35,8 +35,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#pragma GCC visibility push(hidden)
-
 #include "nscore.h"
 #include "JpCntx.h"
 
@@ -230,5 +228,3 @@ PRInt32 EUCJPContextAnalysis::GetOrder(const char* str, PRUint32 *charLen)
      return (unsigned char)*(str+1) - (unsigned char)0xa1;
   return -1;
 }
-
-#pragma GCC visibility pop

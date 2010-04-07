@@ -36,9 +36,6 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  *
  * ***** END LICENSE BLOCK ***** */
-
-#pragma GCC visibility push(hidden)
-
 #include <stdio.h>
 #include "prmem.h"
 
@@ -232,5 +229,3 @@ void nsMBCSGroupProber::GetDetectorState(nsUniversalDetector::DetectorState (&st
   }
 }
 #endif /* DEBUG_jgmyers */
-
-#pragma GCC visibility pop

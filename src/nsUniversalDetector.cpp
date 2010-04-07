@@ -36,8 +36,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#pragma GCC visibility push(hidden)
-
 #include "nscore.h"
 
 #include "nsUniversalDetector.h"
@@ -295,6 +293,3 @@ void nsUniversalDetector::DataEnd()
   }
   return;
 }
-
-#pragma GCC visibility pop
-

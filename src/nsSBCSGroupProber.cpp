@@ -36,8 +36,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#pragma GCC visibility push(hidden)
-
 #include <stdio.h>
 #include "prmem.h"
 
@@ -224,6 +222,3 @@ void nsSBCSGroupProber::DumpStatus()
          mProbers[mBestGuess]->GetCharSetName(), cf);
 }
 #endif
-
-#pragma GCC visibility pop
-

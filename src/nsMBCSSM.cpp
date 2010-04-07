@@ -34,9 +34,6 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  *
  * ***** END LICENSE BLOCK ***** */
-
-#pragma GCC visibility push(hidden)
-
 #include "nsCodingStateMachine.h"
 
 /*
@@ -626,6 +623,4 @@ const SMModel UTF8SMModel = {
   UTF8CharLenTable,
   "UTF-8",
 };
-
-#pragma GCC visibility pop
 

@@ -35,8 +35,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#pragma GCC visibility push(hidden)
-
 #include "nsEUCTWProber.h"
 
 void  nsEUCTWProber::Reset(void)
@@ -54,13 +52,6 @@ nsProbingState nsEUCTWProber::HandleData(const char* aBuf, PRUint32 aLen)
   for (PRUint32 i = 0; i < aLen; i++)
   {
     codingState = mCodingSM->NextState(aBuf[i]);
-    /*
-    if (codingState == eError)
-    {
-      mState = eNotMe;
-      break;
-    }
-    */
     if (codingState == eItsMe)
     {
       mState = eFoundIt;
@@ -97,6 +88,4 @@ float nsEUCTWProber::GetConfidence(void)
 
   return (float)distribCf;
 }
-
-#pragma GCC visibility pop
 

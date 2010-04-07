@@ -35,7 +35,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#pragma GCC visibility push(hidden)
 
 #include "nsEscCharsetProber.h"
 #include "nsUniversalDetector.h"
@@ -93,27 +92,10 @@ nsProbingState nsEscCharSetProber::HandleData(const char* aBuf, PRUint32 aLen)
           mDetectedCharset = mCodingSM[j]->GetCodingStateMachine();
           return mState;
         }
-        /*
-        else if (j != (PRInt32)mActiveSM)
-        {
-          nsCodingStateMachine* t;
-          t = mCodingSM[mActiveSM];
-          mCodingSM[mActiveSM] = mCodingSM[j];
-          mCodingSM[j] = t;
-        }
-      }
-      else if (codingState == eItsMe)
-      {
-        mState = eFoundIt;
-        mDetectedCharset = mCodingSM[j]->GetCodingStateMachine();
-        return mState;
-        */
       }
     }
   }
 
   return mState;
 }
-
-#pragma GCC visibility pop
 

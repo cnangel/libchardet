@@ -1,3 +1,5 @@
 
-* Wed Apr 07 2010 Cnangel <junliang.li@alibaba-inc.com> 1.0.0-1
-- fixed bug about memory and malloc/free
+* Wed Apr 07 2010 Cnangel <cnangel@gmail.com> 0.0.8-1
+- Drop macro "#pragma GCC visibility push(hidden)" and "#pragma GCC visibility pop"
+* Wed Apr 07 2010 Cnangel <cnangel@gmail.com> 0.0.7-1
+- Fixed bug about memory leak and malloc/free
