@@ -38,6 +38,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 #pragma GCC visibility push(hidden)
+#pragma GCC visibility push(default)
 
 #include <stdio.h>
 #include "prmem.h"

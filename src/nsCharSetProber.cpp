@@ -37,6 +37,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 #pragma GCC visibility push(hidden)
+#pragma GCC visibility push(default)
 
 #include "nsCharSetProber.h"
 #include "prmem.h"
