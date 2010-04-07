@@ -79,6 +79,7 @@ public:
     virtual void Reset()
     {
 		nsUniversalDetector::Reset();
+		if (charset_) free(charset_);
 		charset_ = strdup("");
 	}
 
