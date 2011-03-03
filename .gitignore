@@ -26,3 +26,4 @@ src/chardetor
 *.log
 *.tar.gz
 *.spec
+pkgconfig/libchardet.pc
