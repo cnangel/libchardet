@@ -7,5 +7,5 @@ Name: @PACKAGE_NAME@
 Description: Charset detector in Mozilla is a XPCOM component which receive bytes as incoming data and base on the bytes of data "guess" what the charset of the data is and report it to the caller.
 Version: @VERSION@
 #Requires: 
-Libs: -L@libdir@ -lcharset
+Libs: -L@libdir@ -lchardet
 Cflags: -I@includedir@
