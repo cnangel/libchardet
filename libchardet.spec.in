@@ -17,7 +17,7 @@ Prefix: %_prefix
 
 %define PACKAGE_HOME %{_datadir}/@PACKAGE@
 
-Packager: Cnangel <junliang.li@alibaba-inc.com>
+Packager: Cnangel <cnangel@gmail.com>
 
 %description
 %{name}(Charset detector) in Mozilla is a XPCOM component which receive bytes as incoming data and base on the bytes of data "guess" what the charset of the data is and report it to the caller.
