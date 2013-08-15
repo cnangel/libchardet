@@ -65,9 +65,9 @@ fi
 %{_libdir}/pkgconfig/libchardet.pc
 
 %changelog
-* Thu Mar 03 2011 Cnangel <junliang.li@alibaba-inc.com> 0.9.0-1
+* Thu Mar 03 2011 Cnangel <cnangel@gmail.com> 0.9.0-1
 - add pc file.
-* Tue Mar 23 2010 Cnangel <junliang.li@alibaba-inc.com> 0.8.0-1
+* Tue Mar 23 2010 Cnangel <cnangel@gmail.com> 0.8.0-1
 - create spec file 
 
 # -fin-
