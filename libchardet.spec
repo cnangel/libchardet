@@ -2,7 +2,7 @@
 %define prefix_flag	%(if test -z $prefix ; then echo 0; else echo 1; fi;)
 
 Name: libchardet
-Version: @VERSION@
+Version: 0.0.9
 Release: 2
 
 Summary: a library for charset detector
@@ -15,7 +15,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id} -u -n)
 Prefix: %_prefix
 %endif
 
-%define PACKAGE_HOME %{_datadir}/@PACKAGE@
+%define PACKAGE_HOME %{_datadir}/libchardet
 
 Packager: Cnangel <cnangel@gmail.com>
 

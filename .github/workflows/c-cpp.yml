@@ -7,6 +7,122 @@ on:
     branches: [ "master" ]
 
 jobs:
+  build-libchardet-ubuntu-22:
+    name: "Ubuntu-22 - Build Chardet with all dependencies"
+    runs-on: ubuntu-22.04
+    steps:
+      - name: "Show Head Commit"
+        env:
+          CONTENT: ${{ toJSON(github.event.head_commit) }}
+        run: echo "$CONTENT"
+      - name: "update packages"
+        run: sudo apt-get update
+      - name: "install dependencies"
+        run: sudo apt-get install -y sudo git automake make autoconf m4 libtool gcc g++ procps jq jo
+      - name: "System Information"
+        run: |
+          echo === uname ===
+          uname -a
+          echo === /etc/os-release ===
+          cat /etc/os-release
+          echo === df -hl ===
+          df -hl
+          echo === nproc ===
+          nproc || true
+          echo === free -h ===
+          free -h
+          echo === top ===
+          top -b -n1 -1 -Eg || timeout 1 top -b -n1
+          echo === env ===
+          env
+          echo === cc -v ===
+          cc -v
+          echo === g++ -v ===
+          g++ -v
+          echo === pwd ===
+          pwd
+          echo === \$HOME ===
+          echo $HOME
+      - name: "checkout sources"
+        uses: actions/checkout@v3
+      - name: autogen
+        run: ./autogen.sh
+      - name: configure
+        run: ./configure
+      - name: make
+        run: make
+      - name: make check
+        run: make check
+
+  build-libchardet-centos8-latest:
+    name: "CentOS/8.5 - Build Chardet with all dependencies"
+    runs-on: ubuntu-latest
+    # Docker container image name
+    container: "centos:latest"
+    steps:
+      - name: "Show Head Commit"
+        env:
+          CONTENT: ${{ toJSON(github.event.head_commit) }}
+        run: echo "$CONTENT"
+      - name: "patch CentOS Sources location (1st time)"
+        # CentOS 8.2 and later was changed into "CentOS Stream".
+        # Around the same time, CentOS 8.1 became EOL (End-Of-Life),
+        # And the repositories were moved to the legacy "vault.centos.org" URL.
+        # Patch the yum config file to this new location.
+        run: |
+          cd /etc/yum.repos.d/
+          sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+          sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+      - name: "update packages"
+        # stock centos has a problem with CMAKE, fails with:
+        #  "cmake: symbol lookup error: cmake: undefined symbol: archive_write_add_filter_zstd"
+        # updating solves it
+        run: dnf update -y
+      - name: "patch CentOS Sources location (again...)"
+        # The "dnf update -y" above overwrites the yum configuration files,
+        # patch them again to point to the vault URLs.
+        run: |
+          cd /etc/yum.repos.d/
+          sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+          sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+      - name: "install dependencies"
+        run: dnf install -y sudo git automake make autoconf m4 libtool gcc gcc-c++ procps jq rpm-build rpm-sign
+      - name: "System Information"
+        run: |
+          echo === uname ===
+          uname -a
+          echo === /etc/os-release ===
+          cat /etc/os-release
+          echo === /etc/centos-release ===
+          cat /etc/centos-release
+          echo === df -hl ===
+          df -hl
+          echo === nproc ===
+          nproc || true
+          echo === free -h ===
+          free -h
+          echo === top ===
+          top -b -n1 -1 -Eg || timeout 1 top -b -n1
+          echo === env ===
+          env
+          echo === gcc -v ===
+          gcc -v
+          echo === pwd ===
+          pwd
+          echo === \$HOME ===
+          echo $HOME
+      - name: "checkout sources"
+        uses: actions/checkout@v3
+      - name: autogen
+        run: ./autogen.sh
+      - name: configure
+        run: ./configure
+      - name: make
+        run: make
+      - name: make check
+        run: make check
+
+
   build-libchardet-fedora-38:
     name: "Fedora 38 - Build Chardet with all dependencies"
     runs-on: ubuntu-latest
@@ -18,37 +134,77 @@ jobs:
         run: echo "$CONTENT"
       - name: "update packages"
         run: dnf update -y
-      - name: "install sudo,git"
-        run: dnf install -y sudo git automake make autoconf m4 libtool gcc procps jq jo
+      - name: "install dependencies"
+        run: dnf install -y sudo git automake make autoconf m4 libtool gcc gcc-c++ procps jq jo rpm-build rpm-sign
       - name: "System Information"
         run: |
-          echo === uname === 
+          echo === uname ===
           uname -a
-          echo === /etc/os-release === 
+          echo === /etc/os-release ===
           cat /etc/os-release
-          echo === df -hl === 
-          df -hl 
-          echo === nproc === 
+          echo === df -hl ===
+          df -hl
+          echo === nproc ===
           nproc || true
-          echo === free -h === 
+          echo === free -h ===
           free -h
-          echo === top === 
-          top -b -n1 -1 -Eg || timeout 1 top -b -n1 
-          echo === env === 
+          echo === top ===
+          top -b -n1 -1 -Eg || timeout 1 top -b -n1
+          echo === env ===
           env
-          echo === gcc -v === 
+          echo === gcc -v ===
           gcc -v
+          echo === pwd ===
+          pwd
+          echo === \$HOME ===
+          echo $HOME
       - name: "checkout sources"
         uses: actions/checkout@v3
-      - name: autogen
-        run: ./autogen.sh
-      - name: configure
-        run: ./configure
-      - name: make
-        run: make
-      - name: make check
-        run: make check
-      - name: make distcheck
-        run: make distcheck
-      - name: make rpm
-        run: make rpm
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - Create RPM
+            - Upload Source RPM
+          draft: false
+          prerelease: false
+      - name: build RPM package
+        id: rpm_build
+        uses: naveenrajm7/rpmbuild@master
+        with:
+          spec_file: "libchardet.spec"
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ steps.rpm_build.outputs.source_rpm_path }}
+          asset_name: ${{ steps.rpm_build.outputs.source_rpm_name }}
+          asset_content_type: ${{ steps.rpm_build.outputs.rpm_content_type }}
+
+
+#  basics:
+#    name: Basic Processed
+#    runs-on: ubuntu-latest
+#    needs:
+#      - build-tests
+#      - build-sources
+#      - build-libchardet-fedora-38
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: make distcheck
+#        run: make distcheck
+#      - name: Archive artifacts
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: packages-source
+#          path: libchardet-*.tar.gz
+

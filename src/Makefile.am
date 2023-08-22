@@ -58,7 +58,7 @@ LangCyrillicModel.cpp
 
 AM_CXXFLAGS = -Wall -Wno-non-virtual-dtor -nostdinc++ -fno-rtti -fno-exceptions 
 include_HEADERS = chardet.h
-libchardet_la_CPPFLAGS = -nostdinc++ -fno-rtti -fno-exceptions -I tables
+libchardet_la_CPPFLAGS = -nostdinc++ -fno-rtti -fno-exceptions -I${top_srcdir}/src/tables
 
 bin_PROGRAMS = chardetor
 chardetor_SOURCES = chardetor.cpp
