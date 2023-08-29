@@ -63,6 +63,9 @@ fi
 %{_includedir}
 %{_libdir}/*.a
 %{_libdir}/*.so
+%if 0%{?rhel} < 8 || 0%{?fedora} < 28
+%exclude %{_libdir}/*.la
+%endif
 %{_libdir}/pkgconfig/libchardet.pc
 
 %changelog
