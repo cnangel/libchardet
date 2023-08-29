@@ -1,0 +1,79 @@
+---
+name: Create Release
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v*'
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@master
+
+      - name: Set Variables
+        id: variables
+        run: |
+          version_id=${GITHUB_REF_NAME:1}
+          package_name=${GITHUB_REPOSITORY##*/}
+          echo "version_id=$version_id" >> $GITHUB_OUTPUT
+          echo "package_name=$package_name" >> $GITHUB_OUTPUT
+
+      - name: Build DEB Package for Ubuntu
+        id: deb_build_ubuntu
+        uses: cnangel/build-deb-action@master
+        with:
+          before_build_hook: sed -i "s#0.0.1-1#${{ steps.variables.outputs.version_id }}-1#" debian/changelog
+          buildpackage_opts: --build=binary
+          is_output_all_files: false
+
+      - name: Build RPM Package for CentOS7
+        id: rpm_build_centos7
+        uses: cnangel/rpmbuild@centos7
+        with:
+          spec_file: "${{ steps.variables.outputs.package_name }}.spec"
+
+      - name: Build RPM Package for CentOS8
+        id: rpm_build_centos8
+        uses: cnangel/rpmbuild@centos8
+        with:
+          spec_file: "${{ steps.variables.outputs.package_name }}.spec"
+
+      - name: Build RPM Package for CentOS9
+        id: rpm_build_centos9
+        uses: cnangel/rpmbuild@centos9
+        with:
+          spec_file: "${{ steps.variables.outputs.package_name }}.spec"
+
+      - name: Build RPM Package for Fedora38
+        id: rpm_build_fedora38
+        uses: cnangel/rpmbuild@fedora/38
+        with:
+          spec_file: "${{ steps.variables.outputs.package_name }}.spec"
+
+
+      - name: Release ${{ github.ref_name }}
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            Changes in this Release ${{ github.ref_name }}
+            - Create DEB and RPM
+            - Upload DEB, Source RPM and RPMS
+          files: |
+            README.md,LICENSE
+            ${{ steps.deb_build_ubuntu.outputs.deb_dir_names }}
+            ${{ steps.rpm_build_centos7.outputs.rpm_dir_names }}
+            ${{ steps.rpm_build_centos8.outputs.rpm_dir_names }}
+            ${{ steps.rpm_build_centos9.outputs.rpm_dir_names }}
+            ${{ steps.rpm_build_fedora38.outputs.rpm_dir_names }}
+          token: ${{ secrets.SSE_TOKEN }}
+          draft: false
+          prerelease: false

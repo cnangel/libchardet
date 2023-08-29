@@ -55,13 +55,14 @@ fi
 
 %files
 %defattr(-,root,root,-)
-%{_libdir}/*.so*
+%{_libdir}/*.so.*
 %{_bindir}
 
 %files devel
 %defattr(-,root,root,-)
 %{_includedir}
 %{_libdir}/*.a
+%{_libdir}/*.so
 %{_libdir}/pkgconfig/libchardet.pc
 
 %changelog

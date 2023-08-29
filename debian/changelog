@@ -1,0 +1,5 @@
+libchardet (0.0.1-1) UNRELEASED; urgency=medium
+
+  * Initial release. (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Cnangel <cnangel@gmail.com>  Tue, 29 Aug 2023 20:46:38 +0800

@@ -160,37 +160,11 @@ jobs:
           echo $HOME
       - name: "checkout sources"
         uses: actions/checkout@v3
-          #      - name: Create Release
-          #        id: create_release
-          #        uses: actions/create-release@v1
-          #        env:
-          #          GITHUB_TOKEN: ${{ secrets.SSE_TOKEN }}
-          #        with:
-          #          tag_name: ${{ github.ref }}
-          #          release_name: Release ${{ github.ref }}
-          #          body: |
-          #            Changes in this Release
-          #            - First Change
-          #            - Second Change
-          #          draft: false
-          #          prerelease: false
-      - name: build RPM package
-        id: rpm_build
-        run: |
-          currpath=$(pwd)
-          mkdir -p $currpath/target/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-          echo "%_topdir $currpath/target" > $HOME/.rpmmacros
-          ./autogen.sh
-          ./configure
-          make rpm
-          #      - name: Upload Release Asset
-          #        id: upload-release-asset
-          #        uses: actions/upload-release-asset@v1.0.2
-          #        env:
-          #          GITHUB_TOKEN: ${{ secrets.SSE_TOKEN }}
-          #        with:
-          #          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          #          asset_path: ./target/RPMS/x86_64
-          #          asset_name: libchardet*.x86_64.rpm
-          #          asset_content_type: application/octet-stream
-
+      - name: autogen
+        run: ./autogen.sh
+      - name: configure
+        run: ./configure
+      - name: make
+        run: make
+      - name: make check
+        run: make check
