@@ -3,7 +3,7 @@
 
 Name: libchardet
 Version: 0.0.9
-Release: 2
+Release: 1%{?dist}
 
 Summary: a library for charset detector
 License: GPLv3
@@ -69,11 +69,11 @@ fi
 %{_libdir}/pkgconfig/libchardet.pc
 
 %changelog
-* Tue Aug 22 2023 Cnangel <cnangel@gmail.com> 0.9.0-2
-- support fedora38
-* Thu Mar 03 2011 Cnangel <cnangel@gmail.com> 0.9.0-1
+* Tue Aug 29 2023 Cnangel <cnangel@gmail.com> 0.9.0-1
+- support fedora38.
 - add pc file.
+- support github workflow.
 * Tue Mar 23 2010 Cnangel <cnangel@gmail.com> 0.8.0-1
-- create spec file 
+- create spec file.
 
 # -fin-
