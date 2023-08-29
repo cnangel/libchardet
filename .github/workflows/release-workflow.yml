@@ -68,7 +68,7 @@ jobs:
             - Create DEB and RPM
             - Upload DEB, Source RPM and RPMS
           files: |
-            README.md,LICENSE
+            README,COPYING,ChangeLog
             ${{ steps.deb_build_ubuntu.outputs.deb_dir_names }}
             ${{ steps.rpm_build_centos7.outputs.rpm_dir_names }}
             ${{ steps.rpm_build_centos8.outputs.rpm_dir_names }}
