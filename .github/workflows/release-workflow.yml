@@ -29,7 +29,9 @@ jobs:
         id: deb_build_ubuntu
         uses: cnangel/build-deb-action@master
         with:
-          before_build_hook: sed -i "s#0.0.1-1#${{ steps.variables.outputs.version_id }}-1#" debian/changelog
+          before_build_hook: |
+            dch --maintmaint --newversion ${{ steps.variables.outputs.version_id }}-1 "verion ${{ steps.variables.outputs.version_id }}"
+            dch --maintmaint --release ""
           buildpackage_opts: --build=binary
           is_output_all_files: false
 

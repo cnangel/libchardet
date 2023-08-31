@@ -2,7 +2,7 @@
 %define prefix_flag	%(if test -z $prefix ; then echo 0; else echo 1; fi;)
 
 Name: libchardet
-Version: 0.0.9
+Version: 0.0.10
 Release: 1%{?dist}
 
 Summary: a library for charset detector
@@ -69,10 +69,12 @@ fi
 %{_libdir}/pkgconfig/libchardet.pc
 
 %changelog
+* Thu Aug 31 2023 Cnangel <cnangel@gmail.com> 0.0.10-1
+- support github workflow.
+- fix make dist
 * Tue Aug 29 2023 Cnangel <cnangel@gmail.com> 0.9.0-1
 - support fedora38.
 - add pc file.
-- support github workflow.
 * Tue Mar 23 2010 Cnangel <cnangel@gmail.com> 0.8.0-1
 - create spec file.
 

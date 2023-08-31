@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT(libchardet, 0.0.9, [SounOS@gmail.com])
+AC_INIT(libchardet, 0.0.10, [cnangel@gmail.com])
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([src/CharDistribution.cpp])
 AC_CONFIG_HEADER([config.h])
